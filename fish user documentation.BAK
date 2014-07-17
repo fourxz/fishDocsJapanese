@@ -283,13 +283,13 @@ hr {
 <p>あなたのコンピュータ上のどのプログラムも、<code>fish</code>のコマンドとして使えます。もしもプログラムファイルが<a href="#variables-special">PATH</a>ディレクトリのいずれかに含まれる場合、使いたいプログラムの名前をタイプするだけで実行可能です。そうでない場合、ディレクトリを含めたファイル名が必要で、例えば<code>/home/me/code/checkers/checkers</code>または<code>../checkers</code>のようになります。</p>
 <p>以下に、よく使うコマンドを示します：</p>
 <ul>
-<li><code>cd</code> カレントディレクトリを移動します</li>
-<li><code>ls</code> ファイルとディレクトリの一覧を表示します</li>
-<li><code>man</code> スクリーンにマニュアルページを表示します</li>
-<li><code>mv</code> ファイルを移動、またはリネームします</li>
-<li><code>cp</code> ファイルをコピーします</li>
-<li><code>open</code> ファイルタイプ毎に関連付けられたデフォルトのアプリケーションでファイルを開きます</li>
-<li><code>less</code> ファイルの内容を表示します</li>
+<li><code>cd</code>カレントディレクトリを移動します</li>
+<li><code>ls</code>ファイルとディレクトリの一覧を表示します</li>
+<li><code>man</code>スクリーンにマニュアルページを表示します</li>
+<li><code>mv</code>ファイルを移動、またはリネームします</li>
+<li><code>cp</code>ファイルをコピーします</li>
+<li><code>open</code>ファイルタイプ毎に関連付けられたデフォルトのアプリケーションでファイルを開きます</li>
+<li><code>less</code>ファイルの内容を表示します</li>
 </ul>
 <p>Commands and parameters are separated by the space character (&#160;). Every command ends with either a newline (i.e. by pressing the return key) or a semicolon (;). More than one command can be written on the same line by separating them with semicolons.</p>
 <p>A switch is a very common special type of argument. Switches almost always start with one or more hyphens (-) and alter the way a command operates. For example, the <code>ls</code> command usually lists all the files and directories in the current working directory, but by using the <code>-l</code> switch, the behavior of ls is changed to not only display the filename, but also the size, permissions, owner and modification time of each file. Switches differ between commands and are documented in the manual page for each command. Some switches are common to most command though, for example '&ndash;help' will usually display a help text, '-i' will often turn on interactive prompting before taking action, while '-f' will turn it off.</p>
