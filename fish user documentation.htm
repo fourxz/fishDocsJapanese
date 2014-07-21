@@ -295,69 +295,69 @@ hr {
 <p>スイッチはとてもありがちで特別な種類の引数です。スイッチはだいたいハイフン(-)が1つかそれ以上の個数先頭についていて、コマンドの動作を切り替えます。例えば、<code>ls</code>コマンドは普通、現在の作業ディレクトリ中の全てのファイルとディレクトリを一覧表示しますが、<code>-l</code>スイッチを使うことで、lsコマンドにファイル名だけではなくファイル毎のファイルサイズ、権限、所有者、最終更新日時などを表示させられます。コマンドによって使えるスイッチには違いがあり、それぞれのコマンドのマニュアルページに記述されています。スイッチによってはだいたいのコマンドで使えるようなものがあり、例えば '&ndash;help' は大抵ヘルプテキストを表示するでしょうし '-i' では動作する際の対話的な表示を有効にするでしょうし、 '-f' は対話的な表示を無効にするでしょう。</p>
 <h2><a class="anchor" id="quotes"></a>
 クオート</h2>
-<p>ときどき、<a href="#expand">パラメータ拡張</a>や<a href="#escapes">文字エスケープ</a>のような機能が邪魔になることがあります。When that happens, the user can write a parameter within quotes, either ' (single quote) or " (double quote). There is one important difference between single quoted and double quoted strings: When using double quoted string, <a href="#expand-variable">variable expansion</a> still takes place. Other than that, a quoted parameter will not be parameter expanded, may contain spaces, and escape sequences are ignored. The only backslash escape accepted within single quotes is \', which escapes a single quote and \\, which escapes the backslash symbol. The only backslash escapes accepted within double quotes are \", which escapes a double quote, \$, which escapes a dollar character, \ followed by a newline, which deletes the backslash and the newline, and lastly \\, which escapes the backslash symbol. Single quotes have no special meaning within double quotes and vice versa.</p>
-<p>Example:</p>
+<p>ときどき、<a href="#expand">パラメータ拡張</a>や<a href="#escapes">文字エスケープ</a>のような機能が邪魔になることがあります。こんな時は引用符でパラメータを囲むことができ、 ' (シングルクオート) または " (ダブルクオート) が使えます。シングルクオートとダブルクオートには違いがあり、ダブルクオートで囲った場合は<a href="#expand-variable">変数展開</a>が有効です。一方で、シングルクオートで囲まれたパラメータは変数展開されず、エスケープシーケンスも無視されます。シングルクオートで囲まれた中で受け付けられるバックスラッシュによるエスケープシーケンスは次の \' と \\ で、それぞれシングルクオートとバックスラッシュです。ダブルクオートで囲まれた中で受け付けられるエスケープは \" (ダブルクオート)、 \$ (ドル記号)、 行末の\ は複数行を連結し、 \\ はバックスラッシュになります。ダブルクオートで囲まれた中では、逆に、シングルクオートは何の特別な意味も持ちません。</p>
+<p>例:</p>
 <p><code>rm "cumbersome filename.txt"</code></p>
-<p>Will remove the file 'cumbersome filename.txt', while</p>
+<p>が、ファイル名が 'cumbersome filename.txt' なファイルを削除する一方で、</p>
 <p><code>rm cumbersome filename.txt</code></p>
-<p>would remove the two files 'cumbersome' and 'filename.txt'.</p>
+<p>は2つのファイル 'cumbersome' と 'filename.txt' を削除する。</p>
 <h2><a class="anchor" id="escapes"></a>
-Escaping characters</h2>
-<p>Some characters can not be written directly on the command line. For these characters, so called escape sequences are provided. These are:</p>
+エスケープ文字</h2>
+<p>いくつかの文字は直接コマンド行に書くことはできません。これらの文字はエスケープ文字と呼ばれ、以下のとおりです。</p>
 <ul>
-<li><code>'\a'</code> escapes the alert character</li>
-<li><code>'\b'</code> escapes the backspace character</li>
-<li><code>'\e'</code> escapes the escape character</li>
-<li><code>'\f'</code> escapes the form feed character</li>
-<li><code>'\n'</code> escapes a newline character</li>
-<li><code>'\r'</code> escapes the carriage return character</li>
-<li><code>'\t'</code> escapes the tab character</li>
-<li><code>'\v'</code> escapes the vertical tab character</li>
-<li><code>'\ '</code> escapes the space character</li>
-<li><code>'\$'</code> escapes the dollar character</li>
-<li><code>'\\'</code> escapes the backslash character</li>
-<li><code>'\*'</code> escapes the star character</li>
-<li><code>'\?'</code> escapes the question mark character</li>
-<li><code>'\~'</code> escapes the tilde character</li>
-<li><code>'\%'</code> escapes the percent character</li>
-<li><code>'\#'</code> escapes the hash character</li>
-<li><code>'\('</code> escapes the left parenthesis character</li>
-<li><code>'\)'</code> escapes the right parenthesis character</li>
-<li><code>'\{'</code> escapes the left curly bracket character</li>
-<li><code>'\}'</code> escapes the right curly bracket character</li>
-<li><code>'\['</code> escapes the left bracket character</li>
-<li><code>'\]'</code> escapes the right bracket character</li>
-<li><code>'\&lt;'</code> escapes the less than character</li>
-<li><code>'\&gt;'</code> escapes the more than character</li>
-<li><code>'\^'</code> escapes the circumflex character</li>
-<li><code>'\&amp;'</code> escapes the ampersand character</li>
-<li><code>'\;'</code> escapes the semicolon character</li>
-<li><code>'\"'</code> escapes the quote character</li>
-<li><code>'\''</code> escapes the apostrophe character</li>
-<li><code>'\x<em>xx</em>'</code>, where <code><em>xx</em></code> is a hexadecimal number, escapes the ascii character with the specified value. For example, \x9 is the tab character.</li>
-<li><code>'\X<em>xx</em>'</code>, where <code><em>xx</em></code> is a hexadecimal number, escapes a byte of data with the specified value. If you are using a mutibyte encoding, this can be used to enter invalid strings. Only use this if you know what you are doing.</li>
-<li><code>'\<em>ooo</em>'</code>, where <code><em>ooo</em></code> is an octal number, escapes the ascii character with the specified value. For example, \011 is the tab character.</li>
-<li><code>'\u<em>xxxx</em>'</code>, where <code><em>xxxx</em></code> is a hexadecimal number, escapes the 16-bit Unicode character with the specified value. For example, \u9 is the tab character.</li>
-<li><code>'\U<em>xxxxxxxx</em>'</code>, where <code><em>xxxxxxxx</em></code> is a hexadecimal number, escapes the 32-bit Unicode character with the specified value. For example, \U9 is the tab character.</li>
+<li><code>'\a'</code> アラート</li>
+<li><code>'\b'</code> バックスペース</li>
+<li><code>'\e'</code> エスケープ</li>
+<li><code>'\f'</code> フォームフィード</li>
+<li><code>'\n'</code> 改行</li>
+<li><code>'\r'</code> キャリッジリターン</li>
+<li><code>'\t'</code> タブ</li>
+<li><code>'\v'</code> 縦タブ</li>
+<li><code>'\ '</code> スペース</li>
+<li><code>'\$'</code> ドル</li>
+<li><code>'\\'</code> バックスラッシュ</li>
+<li><code>'\*'</code> アスタリスク</li>
+<li><code>'\?'</code> クエスチョンマーク</li>
+<li><code>'\~'</code> チルダ</li>
+<li><code>'\%'</code> パーセント</li>
+<li><code>'\#'</code> 井桁</li>
+<li><code>'\('</code> 左括弧</li>
+<li><code>'\)'</code> 右括弧</li>
+<li><code>'\{'</code> 左中括弧</li>
+<li><code>'\}'</code> 右中括弧</li>
+<li><code>'\['</code> 左角括弧</li>
+<li><code>'\]'</code> 右角括弧</li>
+<li><code>'\&lt;'</code> 小なり</li>
+<li><code>'\&gt;'</code> 大なり</li>
+<li><code>'\^'</code> アクセント</li>
+<li><code>'\&amp;'</code> アンパサンド</li>
+<li><code>'\;'</code> セミコロン</li>
+<li><code>'\"'</code> ダブルクオート</li>
+<li><code>'\''</code> アポストロフ</li>
+<li><code>'\x<em>xx</em>'</code> <code><em>xx</em></code> が16進数だった場合、指定値の文字と置き換えられます。例えば、 \x9 はタブ文字になります。</li>
+<li><code>'\X<em>xx</em>'</code> <code><em>xx</em></code> が16進数であった場合、指定値でバイトデータを置き換えます。マルチバイトエンコーディングの場合は、不正な文字を入力できてしまいます。何をやってるかわかってる場合のみ使ってください。</li>
+<li><code>'\<em>ooo</em>'</code> <code><em>ooo</em></code> が8進数だった場合、特定の値のキャラクタと置き換えます。例えば、 \011 はタブ文字になります。</li>
+<li><code>'\u<em>xxxx</em>'</code> <code><em>xxxx</em></code> が16進数であった場合、特定値の16ビットユニコード文字と置き換えられます。例えば、 \u9 はタブ文字です。</li>
+<li><code>'\U<em>xxxxxxxx</em>'</code> <code><em>xxxxxxxx</em></code>が16進数だったとき、32ビットユニコード文字と置き換えられます。例えば、 \U9 がタブ文字です。</li>
 <li><code>'\c<em>x</em>'</code>, where <code><em>x</em></code> is a letter of the alphabet, escapes the control sequence generated by pressing the control key and the specified letter. For example, \ci is the tab character</li>
 </ul>
 <h2><a class="anchor" id="redirects"></a>
-Input/Output (IO) redirection</h2>
-<p>Most programs use three input/output (IO) streams, each represented by a number called a file descriptor (FD). These are:</p>
+入出力 (IO) リダイレクション</h2>
+<p>だいたいのプログラムは3つの入出力 (IO) ストリームを使っており、ファイルディスクリプタ (FD) と呼ばれる数字でそれぞれ表現されます。</p>
 <ul>
-<li>Standard input, FD 0, for reading, defaults to reading from the keyboard.</li>
-<li>Standard output, FD 1, for writing, defaults to writing to the screen.</li>
-<li>Standard error, FD 2, for writing errors and warnings, defaults to writing to the screen.</li>
+<li>FD 0 は標準入力で、読み取り用で、デフォルトではキーボードからの入力を読み取ります。</li>
+<li>FD 1 は標準出力で、書き込み用で、デフォルトではスクリーンに書き込みます。</li>
+<li>FD 2 は標準エラー出力で、エラーや警告を書き込む用で、標準ではスクリーンに書き込みます。</li>
 </ul>
-<p>The reason for providing for two output file descriptors is to allow separation of errors and warnings from regular program output.</p>
-<p>Any file descriptor can be directed to a different output than its default through a simple mechanism called a redirection.</p>
-<p>An example of a file redirection is <code> echo hello &gt;output.txt</code>, which directs the output of the echo command to the file output.txt.</p>
+<p>2つの出力ファイルディスクリプタが提供されている理由は、エラーや警告を標準的なプログラムの出力と分けたいからです。</p>
+<p>全てのファイルディスクリプタはデフォルトとは別の出力先に出力することができ、これを実現する手軽な機構はリダイレクションと呼ばれています。</p>
+<p>ファイルリダイレクションの例は <code> echo hello &gt;output.txt</code> で、これによってechoコマンドの出力先をファイルの output.txt に向けることができます。</p>
 <ul>
-<li>To redirect standard input, write <code>&lt;SOURCE_FILE</code></li>
-<li>To redirect standard output, write <code>&gt;DESTINATION</code></li>
-<li>To redirect standard error, write <code>^DESTINATION</code></li>
-<li>To redirect standard output to a file which will be appended, write <code>&gt;&gt;DESTINATION_FILE</code></li>
-<li>To redirect standard error to a file which will be appended, write <code>^^DESTINATION_FILE</code></li>
+<li>標準入力のリダイレクトする場合 <code>&lt;SOURCE_FILE</code></li>
+<li>標準出力のリダイレクトする場合 <code>&gt;DESTINATION</code></li>
+<li>標準エラーのリダイレクトする場合 <code>^DESTINATION</code></li>
+<li>標準出力をファイル追記でリダイレクトする場合 <code>&gt;&gt;DESTINATION_FILE</code></li>
+<li>標準エラー出力をファイル追記でリダイレクトする場合 <code>^^DESTINATION_FILE</code></li>
 </ul>
 <p><code>DESTINATION</code> can be one of the following:</p>
 <ul>
