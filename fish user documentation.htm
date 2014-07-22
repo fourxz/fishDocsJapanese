@@ -359,13 +359,13 @@ hr {
 <li>標準出力をファイル追記でリダイレクトする場合 <code>&gt;&gt;DESTINATION_FILE</code></li>
 <li>標準エラー出力をファイル追記でリダイレクトする場合 <code>^^DESTINATION_FILE</code></li>
 </ul>
-<p><code>DESTINATION</code> can be one of the following:</p>
+<p><code>DESTINATION</code> は次のうちいずれかである。:</p>
 <ul>
-<li>A filename. The output will be written to the specified file.</li>
-<li>An ampersand (&amp;) followed by the number of another file descriptor. The file descriptor will be a duplicate of the specified file descriptor.</li>
-<li>An ampersand followed by a minus sign (&amp;-). The file descriptor will be closed.</li>
+<li>ファイル名。出力は特定ファイルに書き込まれる。</li>
+<li>アンパサンド (&amp;) は、他のファイルディスクリプタに続きます。ファイルディスクリプタは特殊なファイルディスクリプタを重複させるでしょう。</li>
+<li>アンパサンドの次にマイナス記号が来た場合 (&amp;-)、ファイルディスクリプタは全て閉じます。</li>
 </ul>
-<p>Example:</p>
+<p>例:</p>
 <p>To redirect both standard output and standard error to the file all_output.txt, you can write <code>echo Hello &gt;all_output.txt ^&amp;1</code>.</p>
 <p>Any FD can be redirected in an arbitrary way by prefixing the redirection with the number of the FD.</p>
 <ul>
