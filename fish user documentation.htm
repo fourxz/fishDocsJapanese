@@ -363,19 +363,19 @@ hr {
 <ul>
 <li>ファイル名。出力は特定ファイルに書き込まれる。</li>
 <li>アンパサンド (&amp;) は、他のファイルディスクリプタに続きます。ファイルディスクリプタは特殊なファイルディスクリプタを重複させるでしょう。</li>
-<li>アンパサンドの次にマイナス記号が来た場合 (&amp;-)、ファイルディスクリプタは全て閉じます。</li>
+<li>アンパサンドの次にマイナス記号が来た場合 (&amp;-)、ファイルディスクリプタは閉じます。</li>
 </ul>
 <p>例:</p>
-<p>To redirect both standard output and standard error to the file all_output.txt, you can write <code>echo Hello &gt;all_output.txt ^&amp;1</code>.</p>
-<p>Any FD can be redirected in an arbitrary way by prefixing the redirection with the number of the FD.</p>
+<p>標準出力と標準エラー出力を両方共 all_output.txtに出力するには、<code>echo Hello &gt;all_output.txt ^&amp;1</code>と書くとよいです。</p>
+<p>どんなFDでも、FD番号でリダイレクトすることで、任意の方法でリダイレクトできます。</p>
 <ul>
-<li>To redirect input of FD number N, write <code>N&lt;DESTINATION</code></li>
-<li>To redirect output of FD number N, write <code>N&gt;DESTINATION</code></li>
-<li>To redirect output of FD number N to a file which will be appended, write <code>N&gt;&gt;DESTINATION_FILE</code></li>
+<li>N番の入力FDをリダイレクトするためには、次のように書きます。 <code>N&lt;DESTINATION</code></li>
+<li>N番の出力FDをリダイレクトするにはあ、次のように書きます。 <code>N&gt;DESTINATION</code></li>
+<li>N番の出力FDをリダイアレクトして追記するためには、次のように書きます。 <code>N&gt;&gt;DESTINATION_FILE</code></li>
 </ul>
-<p>Example: <code>echo Hello 2&gt;-</code> and <code>echo Hello ^-</code> are equivalent.</p>
+<p>例: <code>echo Hello 2&gt;-</code> と <code>echo Hello ^-</code> は同じ意味です。</p>
 <h2><a class="anchor" id="piping"></a>
-Piping</h2>
+パイプ</h2>
 <p>The user can string together multiple commands into a so called pipeline. This means that the standard output of one command will be read in as standard input into the next command. This is done by separating the commands by the pipe character (|). For example</p>
 <p><code>cat foo.txt | head</code></p>
 <p>will call the 'cat' program with the parameter 'foo.txt', which will print the contents of the file 'foo.txt'. The contents of foo.txt will then be filtered through the program 'head', which will pass on the first ten lines of the file to the screen. For more information on how to combine commands through pipes, read the manual pages of the commands you want to use using the 'man' command. If you want to find out more about the 'cat' program, type <code>man cat</code>.</p>
