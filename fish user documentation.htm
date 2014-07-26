@@ -376,10 +376,10 @@ hr {
 <p>例: <code>echo Hello 2&gt;-</code> と <code>echo Hello ^-</code> は同じ意味です。</p>
 <h2><a class="anchor" id="piping"></a>
 パイプ</h2>
-<p>The user can string together multiple commands into a so called pipeline. This means that the standard output of one command will be read in as standard input into the next command. This is done by separating the commands by the pipe character (|). For example</p>
+<p>ユーザーは複数のコマンドを、いわゆるパイプラインにまとめることができます。これは、１つのコマンドの出力が、次のコマンドの標準入力になることを意味します。コマンドをパイプ文字 (|) で区切ることができます。例えば</p>
 <p><code>cat foo.txt | head</code></p>
-<p>will call the 'cat' program with the parameter 'foo.txt', which will print the contents of the file 'foo.txt'. The contents of foo.txt will then be filtered through the program 'head', which will pass on the first ten lines of the file to the screen. For more information on how to combine commands through pipes, read the manual pages of the commands you want to use using the 'man' command. If you want to find out more about the 'cat' program, type <code>man cat</code>.</p>
-<p>Pipes usually connect file descriptor 1 (standard output) of the first process to file descriptor 0 (standard input) of the second process. It is possible use a different output file descriptor by prepending the desired FD number and then output redirect symbol to the pipe. For example:</p>
+<p>これは、 'cat' プログラムをパラメータ 'foo.txt'で呼び出して、 'foo.txt' の中身を表示します。foo.txtの内容は 'head' プログラムによってフィルタされて、ファイルの最初の10行だけが画面に表示されます。 パイプでコマンドを組み合わせる際は、使いたいコマンドのマニュアルを 'man' コマンドで確認してください。'cat' プログラムについて調べたい場合は、<code>man cat</code>と入れてください。</p>
+<p>パイプでありがちなのは、最初のプロセスのファイルディスクリプタ1(標準出力)を次のプロセスのファイルディスクリプタ0(標準入力)に繋げることです。It is possible use a different output file descriptor by prepending the desired FD number and then output redirect symbol to the pipe. For example:</p>
 <p><code>make fish 2&gt;|less</code></p>
 <p>will attempt to build the fish program, and any errors will be shown using the less pager.</p>
 <h2><a class="anchor" id="syntax-background"></a>
