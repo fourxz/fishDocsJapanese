@@ -844,31 +844,31 @@ Syntax highlighting</h2>
 Programmable title</h2>
 <p>When using most virtual terminals, it is possible to set the message displayed in the titlebar of the terminal window. This can be done automatically in fish by defining the <code>fish_title</code> function. The <code>fish_title</code> function is executed before and after a new command is executed or put into the foreground and the output is used as a titlebar message. The $_ environment variable will always contain the name of the job to be put into the foreground (Or 'fish' if control is returning to the shell) when the <code>fish_prompt</code> function is called.</p>
 <p>Example: </p>
-<p>The default <code>fish</code> title is </p>
+<p>デフォルトの <code>fish</code> のタイトルは以下のとおりです。</p>
 <pre>
 function fish_title
         echo $_ ' '
         pwd
 end
 </pre> <h2><a class="anchor" id="greeting"></a>
-Configurable greeting</h2>
-<p>If a function named fish_greeting exists after initialization, it will be run when entering interactive mode. Otherwise,if an environment variable named fish_greeting exists, it will be printed.</p>
+設定可能なあいさつ文</h2>
+<p>もしも初期化後に fish_greeting という名前の関数があれば、インタラクティブモードに入るときに呼ばれます。さもなくば、もし fish_greeting という名前の環境変数が存在すれば、それが表示されます。</p>
 <h2><a class="anchor" id="event"></a>
-Event handlers</h2>
-<p>When defining a new function in fish, it is possible to make it into an event handler, i.e. a function that is automatically run when a specific event takes place. Events that can trigger a handler currently are:</p>
+イベントハンドラ</h2>
+<p>fish で新しい関数を定義するとき、イベントハンドラ内に作ることが可能で、言い換えると、特定のイベントが起きた時に自動で実行できます。現在使用可能なイベントは次のとおりです：</p>
 <ul>
-<li>When a signal is delivered</li>
-<li>When a process or job exits</li>
-<li>When the value of a variable is updated</li>
-<li>When the prompt is about to be shown</li>
-<li>When a command lookup fails</li>
+<li>シグナルが流れてきたとき</li>
+<li>プロセスまたはジョブが終了したとき</li>
+<li>変数の値が更新されたとき</li>
+<li>プロンプトが表示されようとしているとき</li>
+<li>コマンドの探索に失敗したとき</li>
 </ul>
-<p>Example:</p>
-<p>To specify a signal handler for the WINCH signal, write:</p>
+<p>例：</p>
+<p>WINCHシグナルへのシグナルハンドラを定義するためには、次のように書く：</p>
 <pre>function --on-signal WINCH my_signal_handler
-        echo Got WINCH signal!
+        echo WINCH signal が飛んできた！
 end
-</pre><p>For more information on how to define new event handlers, see the documentation for the <a href="commands.html#function">function</a> command.</p>
+</pre><p>イベントハンドラを定義するための詳細な情報については、<a href="commands.html#function">function</a> コマンドのドキュメントを参照してください。</p>
 <h2><a class="anchor" id="debugging"></a>
 Debugging fish scripts</h2>
 <p>Fish includes a built in debugger. The debugger allows you to stop execution of a script at an arbitrary point and launch a prompt. This prompt can then be used to check or change the value of any variables or perform any shellscript command. To resume normal execution of the script, simply exit the prompt.</p>
