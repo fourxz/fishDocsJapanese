@@ -380,23 +380,23 @@ hr {
 <p>ユーザーは複数のコマンドを、いわゆるパイプラインにまとめることができます。これは、１つのコマンドの出力が、次のコマンドの標準入力になることを意味します。コマンドをパイプ文字 (|) で区切ることができます。例えば</p>
 <p><code>cat foo.txt | head</code></p>
 <p>これは、 'cat' プログラムをパラメータ 'foo.txt'で呼び出して、 'foo.txt' の中身を表示します。foo.txtの内容は 'head' プログラムによってフィルタされて、ファイルの最初の10行だけが画面に表示されます。 パイプでコマンドを組み合わせる際は、使いたいコマンドのマニュアルを 'man' コマンドで確認してください。'cat' プログラムについて調べたい場合は、<code>man cat</code>と入れてください。</p>
-<p>パイプでありがちなのは、最初のプロセスのファイルディスクリプタ1(標準出力)を次のプロセスのファイルディスクリプタ0(標準入力)に繋げることです。It is possible use a different output file descriptor by prepending the desired FD number and then output redirect symbol to the pipe. For example:</p>
+<p>パイプでありがちなのは、最初のプロセスのファイルディスクリプタ1(標準出力)を次のプロセスのファイルディスクリプタ0(標準入力)に繋げることです。異なる出力ファイルディスクリプタを、望みのFD番号を先頭につけて、そしてパイプにリダイレクトシンボルを出力することで使うことができます。例えば：
 <p><code>make fish 2&gt;|less</code></p>
-<p>will attempt to build the fish program, and any errors will be shown using the less pager.</p>
+<p>これはfishプログラマをビルドしようとして、そして全てのエラーがlessページャを使って表示しようとします。
 <h2><a class="anchor" id="syntax-background"></a>
 バックグラウンドジョブ</h2>
 <p><code>fish</code> でジョブをスタートさせたとき、 <code>fish</code> それ自体は一時停止し、ターミナルの操作を起動させたプログラムに任せます。ときどき、コマンドラインを使い続け、バックグラウンドで走らせたいようなジョブがあることがあります。バックグラウンドジョブを作るには、 &amp; (ampersand) をコマンドの後に追加します。これはfishに対してバックグラウンドでジョブを走らせろと頼むことになります。バックグラウンドジョブはGUIを持つプログラムを起動するときにとても使えます。</p>
 <p>例：</p>
 <p><code>emacs &amp;</code></p>
-<p>will start the emacs text editor in the background.</p>
+<p>emacsテキストエディタをバックグラウンドで起動します。</p>
 <h2><a class="anchor" id="syntax-job-control"></a>
-Job control</h2>
-<p>Most programs allow you to suspend the program's execution and return control to <code>fish</code> by pressing ^Z (press and hold the Control key and press 'z'). Once back at the <code>fish</code> commandline, you can start other programs and do anything you want. If you then want you can go back to the suspended command by using the <a href="commands.html#fg">fg</a> (foreground) command.</p>
-<p>If you instead want to put a suspended job into the background, use the <a href="commands.html#bg">bg</a> command.</p>
-<p>To get a listing of all currently started jobs, use the <a href="commands.html#jobs">jobs</a> command.</p>
+ジョブコントロール</h2>
+<p>だいたいのプログラムは^Z (Ctrlを押しながら 'z')でプログラムの実行を一時停止してコントロールを<code>fish</code>に戻せます。一度 <code>fish</code> コマンドラインに戻ったら、別のプログラムを起動して何でもできます。一時停止したコマンドに戻りたい時は <a href="commands.html#fg">fg</a> (foreground) コマンドを使います。</p>
+<p>もし一時停止したジョブをバックグラウンドにしたい場合は、 <a href="commands.html#bg">bg</a> コマンドを使います。</p>
+<p>今起動されている全てのジョブを一覧したいときは、 <a href="commands.html#jobs">jobs</a> コマンドを使います。</p>
 <h2><a class="anchor" id="syntax-function"></a>
-Functions</h2>
-<p>Functions are programs written in the fish syntax. They group together one or more commands and their arguments using a single name. It can also be used to start a specific command with additional arguments.</p>
+関数</h2>
+<p>関数はfish文法で書かれたプログラムです。They group together one or more commands and their arguments using a single name. It can also be used to start a specific command with additional arguments.</p>
 <p>For example, the following is a function definition that calls the command <code>ls</code> with the argument '-l' to print a detailed listing of the contents of the current directory:</p>
 <pre>
 function ll
