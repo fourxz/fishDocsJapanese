@@ -396,8 +396,8 @@ hr {
 <p>今起動されている全てのジョブを一覧したいときは、 <a href="commands.html#jobs">jobs</a> コマンドを使います。</p>
 <h2><a class="anchor" id="syntax-function"></a>
 関数</h2>
-<p>関数はfish文法で書かれたプログラムです。They group together one or more commands and their arguments using a single name. It can also be used to start a specific command with additional arguments.</p>
-<p>For example, the following is a function definition that calls the command <code>ls</code> with the argument '-l' to print a detailed listing of the contents of the current directory:</p>
+<p>関数はfish文法で書かれたプログラムです。関数は、1つかそれ以上のコマンドを、1つの名前にまとめます。特定のコマンドを追加の引数で起動するのにも使えます。</p>
+<p>例えば、以下の関数定義では <code>ls</code> コマンドを引数 '-l' を使って呼ぶことで、現在のディレクトリの内容を詳細にリスト表示します：</p>
 <pre>
 function ll
         ls -l $argv
